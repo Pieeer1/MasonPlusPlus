@@ -19,8 +19,8 @@ inline ComponentID GetComponentTypeID()
 
 template <typename T> inline ComponentID GetComponentTypeID() noexcept
 {
-	static ComponentID typeID = GetComponentID();
-	return typeID();
+	static ComponentID typeID = GetComponentTypeID();
+	return typeID;
 }
 
 constexpr std::size_t maxComponents = 32;
@@ -56,7 +56,7 @@ public:
 
 	template <typename T> bool HasComponent() const
 	{
-		return componentBitSet[GetComponentID<T>];
+		return componentBitSet[GetComponentTypeID<T>];
 	}
 
 	template <typename T, typename... TArgs>
