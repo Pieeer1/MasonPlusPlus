@@ -107,5 +107,8 @@
     <ClInclude Include="Collision.h">
       <Filter>Header Files\Models\Math</Filter>
     </ClInclude>
+    <ClInclude Include="TileComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
