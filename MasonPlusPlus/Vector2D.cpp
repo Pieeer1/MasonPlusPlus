@@ -64,11 +64,26 @@ Vector2D& Vector2D::operator/=(const Vector2D& vec)
 	return this->Divide(vec);
 }
 
+Vector2D& Vector2D::operator*(const int& i)
+{
+	this->X *= i;
+	this->Y *= i;
+	return *this;
+}
+
+Vector2D& Vector2D::Zero()
+{
+	this->X = 0;
+	this->Y = 0;
+
+	return *this;
+}
+
 char* Vector2D::ToString(const Vector2D& vec)
 {
 	char arr[256];
 
-	sprintf_s(arr, "(%d,%d)", vec.X, vec.Y);
+	sprintf_s(arr, "(%d,%d)", static_cast<int>(vec.X), static_cast<int>(vec.Y));
 
 	return arr;
 }

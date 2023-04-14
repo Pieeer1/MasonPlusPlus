@@ -8,19 +8,16 @@ public:
 
 	TransformComponent()
 	{
-		Position.X = 0.0f;
-		Position.Y = 0.0f;
+		Position.Zero();
 	}
 	TransformComponent(int scale)
 	{
-		Position.X = 0.0f;
-		Position.Y = 0.0f;
+		Position.Zero();
 		Scale = scale;
 	}
 	TransformComponent(float x, float y)
 	{
-		Position.X = x;
-		Position.Y = y;
+		Position.Zero();
 	}
 	TransformComponent(float x, float y, int h, int w, int scale)
 	{

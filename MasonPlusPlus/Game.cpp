@@ -84,6 +84,10 @@ void Game::Update()
 	manager.Refresh();
 	manager.Update();
 
+	if (Collision::AABBIsColliding(player.GetComponent<ColliderComponent>().Collider, wall.GetComponent<ColliderComponent>().Collider))// collision example
+	{
+		player.GetComponent<TransformComponent>().Velocity * -1; 
+	}
 }
 
 void Game::Render()
