@@ -25,6 +25,21 @@
     <Filter Include="Source Files\Map">
       <UniqueIdentifier>{a51af303-cd20-4d05-be8f-2038a8d092ab}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Components">
+      <UniqueIdentifier>{b526cf61-061f-43af-a329-edad5a70d881}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Models">
+      <UniqueIdentifier>{de31796e-e0aa-475e-a459-17e312886c46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Models\Math">
+      <UniqueIdentifier>{010f05c9-f74c-412a-8c6d-3319408bd07e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Models">
+      <UniqueIdentifier>{0a87806f-4830-42e7-8f9e-cd4687bc21f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Models\Math">
+      <UniqueIdentifier>{8a6898a2-1e07-43fc-95e3-33f34b61261c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -45,6 +60,12 @@
     <ClCompile Include="Map.cpp">
       <Filter>Source Files\Map</Filter>
     </ClCompile>
+    <ClCompile Include="Vector2D.cpp">
+      <Filter>Source Files\Models\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>Source Files\Models\Math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -63,10 +84,28 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="EntityComponentSystem.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteComponent.h">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
     <ClInclude Include="Components.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2D.h">
+      <Filter>Header Files\Models\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyboardControlComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="ColliderComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>Header Files\Models\Math</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

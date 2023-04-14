@@ -1,19 +1,19 @@
 #include "Game.h"
 #include "TextureManager.h"
-#include "GameObject.h"
 #include "Logger.h"
 #include "Map.h"
-#include "EntityComponentSystem.h"
 #include "Components.h"
-GameObject* player;
-GameObject* enemy;
+#include "Vector2D.h"
+#include "Collision.h"
 
 Map* map;
 
 SDL_Renderer* Game::renderer = nullptr;
-
+SDL_Event Game::event;
 Manager manager;
-auto& newPlayer(manager.AddEntity());
+
+auto& player(manager.AddEntity());
+auto& wall(manager.AddEntity());
 
 
 Game::Game()
@@ -50,18 +50,22 @@ void Game::Init(const char* title, int xpos, int ypos, int width, int height, bo
 		isRunning = false;
 	}
 
-	player = new GameObject("Sprites/BaseCharacter.png", 0, 0);
-	enemy = new GameObject("Sprites/EnemyEye.png", 50, 50);
 	map = new Map();
 
 
-	newPlayer.AddComponent<PositionComponent>();
+	player.AddComponent<TransformComponent>(2);
+	player.AddComponent<SpriteComponent>("Sprites/BaseCharacter.png");
+	player.AddComponent<KeyBoardControlComponent>();
+	player.AddComponent<ColliderComponent>("player");
 
+	wall.AddComponent<TransformComponent>(300.0f, 300.0f, 300, 20, 1);
+	wall.AddComponent<SpriteComponent>("Sprites/Dirt.png");
+	wall.AddComponent<ColliderComponent>("wall");
 }
 
 void Game::HandleEvents()
 {
-	SDL_Event event;
+
 	SDL_PollEvent(&event);
 	switch (event.type)
 	{
@@ -77,14 +81,8 @@ void Game::HandleEvents()
 void Game::Update()
 {
 	tick++;
-
-	player->Update();
-	enemy->Update();
+	manager.Refresh();
 	manager.Update();
-	char numChar[1000];
-#pragma warning(disable : 4996)
-	std::sprintf(numChar, "%d", newPlayer.GetComponent<PositionComponent>().x());
-	Logger::LogInformation(numChar);
 
 }
 
@@ -92,9 +90,7 @@ void Game::Render()
 {
 	SDL_RenderClear(renderer);
 	map->DrawMap();
-
-	player->Render();
-	enemy->Render();
+	manager.Draw();
 	SDL_RenderPresent(renderer);
 }
 
