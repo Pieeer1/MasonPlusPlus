@@ -100,10 +100,14 @@ void Game::Update()
 	manager.Refresh();
 	manager.Update();
 
-	if (Collision::AABBIsColliding(player.GetComponent<ColliderComponent>().Collider, wall.GetComponent<ColliderComponent>().Collider))// collision example
+	for (auto cc : colliders)
 	{
-		player.GetComponent<TransformComponent>().Velocity * -1; 
+		if (cc->Tag != "player")
+		{		
+			Collision::AABBIsColliding(player.GetComponent<ColliderComponent>(), *cc);
+		}
 	}
+
 }
 
 void Game::Render()
