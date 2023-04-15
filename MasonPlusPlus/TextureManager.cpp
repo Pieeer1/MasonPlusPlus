@@ -1,5 +1,5 @@
 #include "TextureManager.h"
-
+#include "Game.h"
 SDL_Texture* TextureManager::LoadTexture(const char* fileName)
 {
     return IMG_LoadTexture(Game::renderer, fileName);

@@ -12,9 +12,16 @@ SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
 Manager manager;
 
+std::vector<ColliderComponent*> Game::colliders;
+
 auto& player(manager.AddEntity());
 auto& wall(manager.AddEntity());
 
+auto& tile0(manager.AddEntity());
+auto& tile1(manager.AddEntity());
+auto& tile2(manager.AddEntity());
+auto& tile3(manager.AddEntity());
+auto& tile4(manager.AddEntity());
 
 Game::Game()
 {
@@ -52,6 +59,15 @@ void Game::Init(const char* title, int xpos, int ypos, int width, int height, bo
 
 	map = new Map();
 
+	tile0.AddComponent<TileComponent>(200, 200, 32, 32, 0);
+	tile1.AddComponent<TileComponent>(250, 250, 32, 32, 1);
+	tile1.AddComponent<ColliderComponent>("dirt");
+	tile2.AddComponent<TileComponent>(300, 300, 32, 32, 2);
+	tile2.AddComponent<ColliderComponent>("grass");
+	tile3.AddComponent<TileComponent>(350, 350, 32, 32, 2);
+	tile3.AddComponent<ColliderComponent>("grass");
+	tile4.AddComponent<TileComponent>(400, 400, 32, 32, 2);
+	tile4.AddComponent<ColliderComponent>("grass");
 
 	player.AddComponent<TransformComponent>(2);
 	player.AddComponent<SpriteComponent>("Sprites/BaseCharacter.png");
@@ -93,7 +109,7 @@ void Game::Update()
 void Game::Render()
 {
 	SDL_RenderClear(renderer);
-	map->DrawMap();
+	//map->DrawMap();
 	manager.Draw();
 	SDL_RenderPresent(renderer);
 }
